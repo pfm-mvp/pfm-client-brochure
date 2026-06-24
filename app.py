@@ -21,4 +21,4 @@ html = html.replace(
     "<script>\n" + pricing_config + "\n</script>"
 )
 
-components.html(html, height=2600, scrolling=False)
+components.html(html, height=5200, scrolling=False)

@@ -31,3 +31,10 @@ Customer-facing demo version for retail conversations.
 ```bash
 streamlit run app.py
 ```
+
+
+## v31 update
+- Homepage made more compact so context inputs are visible without first scrolling.
+- Streamlit component height increased to reduce iframe/internal-scroll feeling.
+- Large realistic profit values now use compact formatting, e.g. €1.000.000 becomes €1M.
+- Existing route logic, pricing logic and customer-facing flow preserved.

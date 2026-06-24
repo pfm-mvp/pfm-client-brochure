@@ -193,15 +193,15 @@
     .main-wrap {
       width: min(1320px, calc(100vw - 52px));
       margin: 0 auto;
-      padding: 46px 0 72px;
+      padding: 28px 0 72px;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.04fr .96fr;
-      gap: 34px;
-      align-items: stretch;
-      min-height: calc(100vh - 156px);
+      grid-template-columns: .88fr 1.12fr;
+      gap: 28px;
+      align-items: start;
+      min-height: auto;
     }
 
     .hero-left {
@@ -210,7 +210,7 @@
         linear-gradient(145deg, rgba(12,17,29,.92), rgba(16,24,40,.96)),
         radial-gradient(circle at 18% 8%, rgba(158,119,237,.26), transparent 38%);
       color: white;
-      padding: 54px;
+      padding: 38px 42px;
       overflow: hidden;
       position: relative;
       box-shadow: var(--shadow-soft);
@@ -238,7 +238,7 @@
     h1, h2, h3 { margin-top: 0; }
 
     h1 {
-      font-size: clamp(50px, 7vw, 92px);
+      font-size: clamp(42px, 5.5vw, 68px);
       line-height: .93;
       letter-spacing: -.07em;
       margin-bottom: 22px;
@@ -262,12 +262,12 @@
     .red { color: var(--pfm-red); }
 
     .lead {
-      font-size: 20px;
-      line-height: 1.52;
+      font-size: 17px;
+      line-height: 1.45;
       font-weight: 680;
       color: #D0D5DD;
       max-width: 680px;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
 
     .muted {
@@ -277,8 +277,8 @@
     }
 
     .hero-visual {
-      margin-top: 44px;
-      min-height: 220px;
+      margin-top: 26px;
+      min-height: 145px;
       border: 1px solid rgba(255,255,255,.08);
       border-radius: 28px;
       background:
@@ -331,8 +331,8 @@
       background: white;
       border: 1px solid var(--line);
       box-shadow: var(--shadow-soft);
-      padding: 32px;
-      align-self: center;
+      padding: 28px;
+      align-self: start;
     }
 
     .form-grid {
@@ -759,7 +759,7 @@
       .main-wrap { width: min(100% - 28px, 1320px); padding-top: 24px; }
       .hero-left, .hero-card, .content-card { padding: 24px; }
       .form-grid, .customer-toggle, .goal-grid, .metric-grid { grid-template-columns: 1fr; }
-      h1 { font-size: 52px; }
+      h1 { font-size: 44px; }
     }
 
     /* v13 impact model refinements */
@@ -1893,7 +1893,7 @@
           <div class="summary-row"><span>Locations</span><strong>${state.values.locations}</strong></div>
           <div class="summary-row"><span>Weekly footfall</span><strong id="summaryWeeklyFootfall">${Number(state.values.weeklyFootfall || 0).toLocaleString("de-DE")}</strong></div>
           <div class="summary-row"><span>PFM route</span><strong>${routeLabel()}</strong></div>
-          <div class="summary-row"><span>Realistic profit</span><strong id="summaryRealisticProfit">${euro(c.realisticProfit)}</strong></div>
+          <div class="summary-row"><span>Realistic profit</span><strong id="summaryRealisticProfit">${euroCompact(c.realisticProfit)}</strong></div>
         ` : `
           <div class="summary-row"><span>Entrances</span><strong>${state.values.entrances}</strong></div>
           <div class="summary-row"><span>Stores</span><strong>${state.values.storesPresent}</strong></div>
@@ -2004,7 +2004,7 @@
           <div class="roi-mini-card"><small>Total CAPEX</small><strong>${euro(c.capexTotal)}</strong></div>
           <div class="roi-mini-card"><small>Monthly service</small><strong>${euro(c.monthlyServiceTotal)}</strong></div>
           <div class="roi-mini-card"><small>TCO over ${horizon} years</small><strong>${euro(c.tco)}</strong></div>
-          <div class="roi-mini-card profit"><small>Realistic extra profit / year</small><strong>${euro(c.realisticProfit)}</strong></div>
+          <div class="roi-mini-card profit"><small>Realistic extra profit / year</small><strong>${euroCompact(c.realisticProfit)}</strong></div>
           <div class="roi-mini-card"><small>ROI over horizon</small><strong>${pct(c.roi)}</strong></div>
         </div>
       `;
@@ -2136,7 +2136,7 @@
         // Update all Live Scan Summary instances. Multiple steps can contain a summary
         // with the same id while hidden, so getElementById can hit the wrong one.
         document.querySelectorAll("#summaryRealisticProfit").forEach(el => {
-          el.textContent = euro(currentCalc.realisticProfit);
+          el.textContent = euroCompact(currentCalc.realisticProfit);
         });
         document.querySelectorAll("#summaryWeeklyFootfall").forEach(el => {
           el.textContent = Number(state.values.weeklyFootfall || 0).toLocaleString("de-DE");
@@ -2269,7 +2269,7 @@
 
           <div class="metric-grid" style="margin-top:24px;">
             <div class="metric-card black"><small>Potential payback</small><strong>${c.paybackMonths ? c.paybackMonths.toFixed(1) + " mo." : "n/a"}</strong></div>
-            <div class="metric-card purple"><small>Indicative extra profit / year</small><strong>${euro(c.realisticProfit)}</strong></div>
+            <div class="metric-card purple"><small>Indicative extra profit / year</small><strong>${euroCompact(c.realisticProfit)}</strong></div>
             <div class="metric-card"><small>Stores in scope</small><strong>${state.values.locations}</strong></div>
             <div class="metric-card"><small>Recommended route</small><strong>${routeLabel()}</strong></div>
           </div>
@@ -2301,7 +2301,7 @@
       const name = state.values.clientName || (state.customerType === "Shopping Centre" ? "your centre" : "your retail chain");
       document.getElementById("heroCompany").textContent = name;
       const miniUpside = document.getElementById("miniUpside");
-      if (miniUpside) miniUpside.textContent = euro(calc().realisticProfit || 420000);
+      if (miniUpside) miniUpside.textContent = euroCompact(calc().realisticProfit || 420000);
       document.querySelectorAll(".customer-card").forEach(card => card.classList.toggle("active", card.dataset.type === state.customerType));
     }
 
