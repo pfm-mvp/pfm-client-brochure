@@ -54,7 +54,7 @@ window.PFM_PRICING = {
       name: "Essential",
       headline: "Measure the basics reliably",
       promise: "For retailers that first need a trusted baseline for store traffic and conversion potential.",
-      contains: ["Advantage Portal", "Data management", "Footfall"],
+      contains: ["Advantage Portal", "Data management", "Footfall", "Portfolio-wide report", "Sensor management", "Remote support", "Conversion rate"],
       odooKey: "essential"
     },
     performance: {

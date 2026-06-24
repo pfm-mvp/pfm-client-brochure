@@ -400,7 +400,7 @@
         name: "Essential",
         headline: "Measure the basics reliably",
         promise: "For retailers that first need a trusted baseline for store traffic and conversion potential.",
-        contains: ["Advantage Portal", "Data management", "Footfall"],
+        contains: ["Advantage Portal", "Data management", "Footfall", "Portfolio-wide report", "Sensor management", "Remote support", "Conversion rate"],
         odooKey: "essential"
       },
       performance: {
@@ -449,6 +449,21 @@
 
     function L(key) { return (labels[state.lang] || labels.EN)[key] || key; }
     function euro(n) { return "€" + Math.round(n).toLocaleString("de-DE"); }
+    function euroCompact(n) {
+      const value = Number(n || 0);
+      const abs = Math.abs(value);
+      if (abs >= 1000000) {
+        const v = value / 1000000;
+        const formatted = (Math.abs(v) >= 10 ? v.toFixed(1) : v.toFixed(1)).replace(/\.0$/, "");
+        return "€" + formatted + "M";
+      }
+      if (abs >= 100000) {
+        const v = value / 1000;
+        const formatted = v.toFixed(0);
+        return "€" + formatted + "K";
+      }
+      return euro(value);
+    }
     function pct(n, digits = 1) { return Number(n).toFixed(digits).replace(".", ",") + "%"; }
     function operatingUnit() { return CUSTOMER_TYPE_TO_OPERATING_UNIT[state.customerType] || "Shops"; }
     function salespersonId() { return SALESPERSON_MAP[state.values.preparedBy] || null; }
@@ -1075,11 +1090,11 @@
             <strong>${c.paybackMonths ? c.paybackMonths.toFixed(1) + " mo." : "n/a"}</strong>
             <span>Based on realistic profit after monthly service.</span>
           </div>
-          <div class="roi-mini-card"><small>Revenue baseline / year</small><strong>${euro(c.baselineRevenue)}</strong></div>
+          <div class="roi-mini-card compact"><small>Revenue baseline / year</small><strong>${euroCompact(c.baselineRevenue)}</strong></div>
           <div class="roi-mini-card"><small>Total CAPEX</small><strong>${euro(c.capexTotal)}</strong></div>
           <div class="roi-mini-card"><small>Monthly service</small><strong>${euro(c.monthlyServiceTotal)}</strong></div>
           <div class="roi-mini-card"><small>TCO over ${horizon} years</small><strong>${euro(c.tco)}</strong></div>
-          <div class="roi-mini-card"><small>Realistic extra profit / year</small><strong>${euro(c.realisticProfit)}</strong></div>
+          <div class="roi-mini-card profit"><small>Realistic extra profit / year</small><strong>${euro(c.realisticProfit)}</strong></div>
           <div class="roi-mini-card"><small>ROI over horizon</small><strong>${pct(c.roi)}</strong></div>
         </div>
       `;
@@ -1343,8 +1358,8 @@
           <p class="muted">This summary captures the selected challenges, the matching PFM insight fit and the indicative commercial impact. It is intended as a conversation starter and can be refined into a tailored proposal after the session.</p>
 
           <div class="metric-grid" style="margin-top:24px;">
-            <div class="metric-card primary"><small>Potential payback</small><strong>${c.paybackMonths ? c.paybackMonths.toFixed(1) + " mo." : "n/a"}</strong></div>
-            <div class="metric-card"><small>Indicative extra profit / year</small><strong>${euro(c.realisticProfit)}</strong></div>
+            <div class="metric-card black"><small>Potential payback</small><strong>${c.paybackMonths ? c.paybackMonths.toFixed(1) + " mo." : "n/a"}</strong></div>
+            <div class="metric-card purple"><small>Indicative extra profit / year</small><strong>${euro(c.realisticProfit)}</strong></div>
             <div class="metric-card"><small>Stores in scope</small><strong>${state.values.locations}</strong></div>
             <div class="metric-card"><small>Recommended route</small><strong>${routeLabel()}</strong></div>
           </div>
