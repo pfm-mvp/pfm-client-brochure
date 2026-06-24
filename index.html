@@ -198,9 +198,9 @@
 
     .hero {
       display: grid;
-      grid-template-columns: .88fr 1.12fr;
+      grid-template-columns: .82fr 1.18fr;
       gap: 28px;
-      align-items: start;
+      align-items: start !important;
       min-height: auto;
     }
 
@@ -332,7 +332,9 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow-soft);
       padding: 28px;
-      align-self: start;
+      align-self: start !important;
+      margin-top: 0 !important;
+      transform: none !important;
     }
 
     .form-grid {
@@ -590,9 +592,10 @@
     }
 
     .metric-card.primary {
-      background: var(--pfm-red);
-      border-color: var(--pfm-red);
+      background: linear-gradient(135deg, var(--pfm-purple), var(--pfm-purple-dark));
+      border-color: var(--pfm-purple);
       color: white;
+      box-shadow: 0 18px 38px rgba(118,33,129,.20);
     }
 
     .metric-card.black {
