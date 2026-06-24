@@ -19,3 +19,7 @@ Customer-facing demo version for retail conversations.
 - `app.py`
 - `requirements.txt`
 - `script.js`
+
+## v33 update
+- Fixed homepage visual balance: the dark hero panel now stretches to the same height as the right context input panel.
+- No calculation, pricing, route, or customer-facing flow logic was changed.
