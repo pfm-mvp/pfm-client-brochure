@@ -10,7 +10,7 @@
 
 window.PFM_PRICING = {
   meta: {
-    version: "2026-06-18-v22",
+    version: "2026-06-24-v29",
     currency: "EUR",
     defaultContractYears: 3,
     notes: "Central pricing config for Retail Chain and Shopping Centre flows."
@@ -51,31 +51,25 @@ window.PFM_PRICING = {
 
   routePackages: {
     starter: {
-      name: "Starter",
-      headline: "Measure what happens",
-      promise: "For retailers that need reliable visibility across stores.",
-      contains: ["Footfall visibility", "Weekly report", "Mobile access"],
-      monthly: 290,
-      setup: 950,
-      odooKey: "starter"
+      name: "Essential",
+      headline: "Measure the basics reliably",
+      promise: "For retailers that first need a trusted baseline for store traffic and conversion potential.",
+      contains: ["Advantage Portal", "Data management", "Footfall"],
+      odooKey: "essential"
     },
     performance: {
-      name: "Performance",
-      headline: "Understand where performance leaks",
-      promise: "For teams that want to connect visitors, conversion and store actions.",
-      contains: ["Conversion insights", "Performance dashboard", "Benchmarking"],
-      monthly: 490,
-      setup: 1450,
-      odooKey: "performance"
+      name: "Professional",
+      headline: "Understand who visits and what attracts them",
+      promise: "For retailers that want visitor profile insights, capture-rate context and richer performance explanation.",
+      contains: ["Essential included", "Age / gender / group options", "Occupancy", "Capture rate"],
+      odooKey: "professional"
     },
     intelligence: {
-      name: "Intelligence",
-      headline: "Turn data into weekly decisions",
-      promise: "For retailers that want proactive recommendations and portfolio control.",
-      contains: ["AI recommendations", "Portfolio view", "Dedicated CSM"],
-      monthly: 850,
-      setup: 1950,
-      odooKey: "intelligence"
+      name: "Enterprise",
+      headline: "Analyse journeys, zones and in-store behaviour",
+      promise: "For retailers that want in-store analytics, zoning, dwell, Re-ID feasibility or advanced reporting.",
+      contains: ["Professional included", "Re-ID / dwell", "Heat mapping", "Sales-data conversion report"],
+      odooKey: "enterprise"
     }
   },
 

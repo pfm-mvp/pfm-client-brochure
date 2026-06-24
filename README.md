@@ -29,3 +29,32 @@ Customer-facing version for a commercial retail meeting.
 pip install -r requirements.txt
 streamlit run app.py
 ```
+
+## v28 fix
+
+Customer-facing retail demo fix:
+- Retail Chain no longer preselects Capture Rate / Street Potential by default.
+- The Street Potential / Capture Rate Layer only appears in the Impact Model when a capture-related performance leak is selected.
+- Setting Capture stores in scope to 0 now keeps CAPEX/OPEX/TCO at 0 for that component instead of falling back to 10.
+- No changes to pricing-config.js, app.py, requirements.txt or script.js.
+
+## v29 customer demo update
+
+Updated files:
+- `index.html`
+- `pricing-config.js`
+- `README.md`
+
+No changes were made to:
+- `app.py`
+- `requirements.txt`
+- `script.js`
+
+Changes:
+- Retail route naming updated to `Essential`, `Professional`, and `Enterprise`.
+- Route recommendation is now automatic:
+  - `Essential` = trusted baseline / footfall only.
+  - `Professional` = visitor profile add-ons such as age, gender, group, adults/kids, or capture-rate insight.
+  - `Enterprise` = in-store analytics, zoning, journey, dwell, Re-ID/heatmapping style needs.
+- The monthly price shown on the Route page now comes from the current Impact Model OPEX/month (`commercialTotals().monthlyServiceTotal`) instead of fixed package placeholder pricing.
+- Route package names in `pricing-config.js` are aligned with the customer-facing names.
